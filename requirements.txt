@@ -1,9 +1,6 @@
 Django==2.0.2
-Markdown==2.6.11
-Pillow==5.0.0
 django-filter==1.1.0
 djangorestframework==3.7.7
-pip==9.0.1
+Markdown==2.6.11
+Pillow==5.0.0
 pytz==2018.3
-setuptools==38.5.1
-wheel==0.30.0
