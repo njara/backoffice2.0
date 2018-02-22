@@ -31,10 +31,10 @@ class EmisorViewSet(viewsets.ModelViewSet):
 
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
-router.register(r'comercios', CompanyViewSet)
-router.register(r'emisores', EmisorViewSet)
 
 urlpatterns = [
     url(r'^', include(router.urls)),
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^companies/', CompanyList.as_view(), name='companies'),
+    url(r'^issuers/', IssusingList.as_view(), name='issuers'),
 ]
