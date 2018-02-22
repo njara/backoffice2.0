@@ -31,6 +31,15 @@ class AccountSerializer(serializers.ModelSerializer):
             'status'
         )
 
+    def create(self, validated_data):
+        validated_data['id'] = None
+        account = Account.objects.create(
+            id=validated_data['id'],
+            token=validated_data['position'],
+            status=validated_data['answer'],
+        )
+        return account
+
 
 class UserProfileSerializer(serializers.ModelSerializer):
     account = AccountSerializer()
@@ -39,9 +48,18 @@ class UserProfileSerializer(serializers.ModelSerializer):
         model = UserProfile
         fields = (
             'id',
+            'username',
             'app_installed',
             'first_name',
             'last_name',
             'email',
             'account',
         )
+
+    def create(self, validated_data):
+        account_data = validated_data.pop('account')
+        validated_data['id'] = None
+        account = Account.objects.create(**account_data)
+        validated_data['account'] = account
+        userprofile = UserProfile.objects.create(**validated_data)
+        return userprofile
