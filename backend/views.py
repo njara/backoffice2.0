@@ -72,15 +72,15 @@ class IssusingList(APIView):
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-class UserProfile(APIView):
+class UserProfileList(APIView):
     """
     Get the UserProfile from Transbank DB.
     """
 
     def get(self, request, format=None):
-        issuers = Emisor.objects.all()
+        users = UserProfile.objects.all()
 
-        serializer = IssusingSerializer(issuers, many=True,)
+        serializer = UserProfileSerializer(users, many=True,)
 
         return Response(serializer.data, status=status.HTTP_200_OK)
 
@@ -97,7 +97,7 @@ class UserProfile(APIView):
             #   serializer = IssusingSerializer(data=request.data)
             # else:
             #   serializer = IssusingSerializer(data={'infield_user': request.user})
-        serializer = IssusingSerializer(data=request.data)
+        serializer = UserProfileSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)

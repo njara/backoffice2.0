@@ -33,7 +33,7 @@ class AccountSerializer(serializers.ModelSerializer):
 
 
 class UserProfileSerializer(serializers.ModelSerializer):
-    account = CompanySerializer()
+    account = AccountSerializer()
 
     class Meta:
         model = UserProfile
@@ -41,6 +41,7 @@ class UserProfileSerializer(serializers.ModelSerializer):
             'id',
             'app_installed',
             'first_name',
-            'last-name',
+            'last_name',
             'email',
+            'account',
         )

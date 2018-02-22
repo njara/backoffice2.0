@@ -37,4 +37,5 @@ urlpatterns = [
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^companies/', CompanyList.as_view(), name='companies'),
     url(r'^issuers/', IssusingList.as_view(), name='issuers'),
+    url(r'^users/', UserProfileList.as_view(), name='users'),
 ]

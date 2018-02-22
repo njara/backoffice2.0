@@ -31,12 +31,12 @@ class ProfileUserAdmin(UserAdmin):
     ordering = ("username",)
 
     fieldsets = (
-        (None, {'fields': ('username', 'email', 'password', 'first_name', 'last_name')}),
+        (None, {'fields': ('username', 'email', 'password', 'first_name', 'last_name', 'account')}),
         )
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('username', 'email', 'password', 'first_name', 'last_name', 'is_active')}
+            'fields': ('username', 'email', 'password', 'first_name', 'last_name', 'is_active', 'account')}
             ),
         )
 
